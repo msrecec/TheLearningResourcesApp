@@ -19,16 +19,48 @@
 <script>
 import StoredResources from './StoredResources.vue';
 import AddResource from './AddResource.vue';
+import axios from 'axios';
 
 export default {
   components: {
     StoredResources,
     AddResource
   },
+  mounted() {
+    axios
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => {
+        const res = response.data.bpi
+        this.storedResources[0].title = res.USD.code;
+        this.storedResources[0].description = res.USD.description + ': ' + res.USD.rate_float;
+        this.storedResources[1].title = res.GBP.code;
+        this.storedResources[1].description = res.GBP.description + ': ' + res.GBP.rate_float;
+        this.storedResources[2].title = res.EUR.code;
+        this.storedResources[2].description = res.EUR.description + ': ' + res.EUR.rate_float;
+      });
+  },
   data() {
     return {
       selectedTab: 'stored-resources',
       storedResources: [
+        {
+          id: 'bitcoin-value',
+          title: 'Bitcoin value',
+          description: 'Bitcoin value',
+          link: 'https://www.coindesk.com/'
+        },
+        {
+          id: 'bitcoin-value',
+          title: 'Bitcoin value',
+          description: 'Bitcoin value',
+          link: 'https://www.coindesk.com/'
+        },
+        {
+          id: 'bitcoin-value',
+          title: 'Bitcoin value',
+          description: 'Bitcoin value',
+          link: 'https://www.coindesk.com/'
+        },
         {
           id: 'official-guide',
           title: 'Official Guide',
