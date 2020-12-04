@@ -7,6 +7,7 @@
       :title="res.title"
       :description="res.description"
       :link="res.link"
+      :myimg="res.img"
     ></learning-resource>
     <!-- <LearningResource v-for="res in storedResources" :key="res.id" /> -->
   </ul>

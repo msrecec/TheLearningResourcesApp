@@ -9,12 +9,36 @@
       <nav>
         <a :href="link">View Resource</a>
       </nav>
+      <img :src=myimg alt="moja slika" />
     </base-card>
   </li>
 </template>
 <script>
 export default {
-  props: ['id', 'title', 'description', 'link'],
+  // props: ['id', 'title', 'description', 'link'],
+  props: {
+    id: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    link: {
+      type: String,
+      required: true
+    },
+    myimg: {
+      type: String,
+      required: false
+    }
+  },
+
   inject: ['deleteResource']
 };
 </script>
